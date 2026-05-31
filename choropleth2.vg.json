@@ -1,0 +1,42 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Proportion of Total Forested Area Burnt by 2019-2020 Bushfires by State/Territory",
+  "width": 800,
+  "height": 400,
+  "projection": {"type": "mercator"},
+  "data": {
+    "url": "australian_stateterritory.json",
+    "format": {"type": "topojson", "feature": "STE_2016_AUST"}
+  },
+  "transform": [
+    {
+      "lookup": "properties.STE_NAME16",
+      "from": {
+        "data": {
+          "url": "2020_bushfire_states.csv"
+        },
+        "key": "STATE",
+        "fields": ["FOREST", "FIRE"]
+      }
+    },
+    {"calculate": "datum.FIRE / datum.FOREST", "as": "PROPORTION_FIRE"}
+  ],
+  "mark": {"type": "geoshape"},
+  "encoding": {
+    "color": {
+      "field": "PROPORTION_FIRE",
+      "type": "quantitative",
+      "scale": {
+        "domain": [0, 0.6],
+        "scheme": "reds"
+    },
+      "legend": {"format": ".2%"}
+    },
+    "tooltip": [
+      {"field": "properties.STE_NAME16", "type": "nominal", "title": "State/Territory"},
+      {"field": "FOREST", "type": "quantitative", "title": "Total Area of Forests (hectares)"},
+      {"field": "FIRE", "type": "quantitative", "title": "Total Forested Area Burnt by the Bushfires (hectares)"},
+      {"field": "PROPORTION_FIRE", "type": "quantitative", "title": "Proportion of Total Forested Area Burnt by Bushfires", "format": ".2%"}
+    ]
+  }
+}

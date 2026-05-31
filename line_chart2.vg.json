@@ -1,0 +1,43 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "title": "Amount of Forested Area Lost from 2001-2025",
+  "data": {"url": "primary_forest_loss.csv"},
+  "params": [
+    {
+      "name": "y_scale_max",
+      "value": 2400000,
+      "bind": {
+        "input": "range",
+        "min": 100000,
+        "max": 2400000,
+        "step": 100000,
+        "name": "Maximum Area Lost: "
+      }
+    }
+  ],
+  "transform": [
+    {"fold": ["Hard Commodities","Logging","Natural Disturbances","Permanent Agriculture","Settlements & Infrastructure","Shifting Cultivation","Fire"], "as": ["CAUSE", "FOREST_LOST"]},
+    {"filter": "datum.FOREST_LOST < y_scale_max"}
+  ],
+  "mark": {"type": "line", "point": true},
+  "height": 600,
+  "width": "container",
+  "autosize": {"type": "fit", "contains": "padding"},
+  "encoding": {
+    "x": {"field": "YEAR", "type": "temporal", "title": "Year"},
+    "y": {"field": "FOREST_LOST", "type": "quantitative", "title": "Forested Area Lost (hectares)"},
+    "color": {
+        "field": "CAUSE", 
+        "type": "nominal",
+        "scale": {
+            "domain": ["Hard Commodities","Logging","Natural Disturbances","Permanent Agriculture","Settlements & Infrastructure","Shifting Cultivation","Fire"],
+            "range": ["#0090FF","#59A000","#FF00E1","#0008FF","#F28000","#FBFF00","#FF2900"]
+        }
+    },
+    "tooltip": [
+        {"field": "CAUSE", "type": "nominal", "title": "Cause for Loss of Forested Area"},
+        {"field": "YEAR", "type": "temporal", "title": "Year", "format": "%Y"},
+        {"field": "FOREST_LOST", "type": "quantitative", "title": "Forested Area Lost (hectares)"}
+    ]
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "data": {"url": "state_forest_lost.csv"},
+  "transform": [
+    {"fold": ["Hard Commodities","Logging","Natural Disturbances","Permanent Agriculture","Settlements & Infrastructure","Shifting Cultivation","Fire"], "as": ["Cause for Loss of Forested Area", "AREA"]},
+    {"calculate": "datum.AREA / datum.Total", "as": "Proportion of Lost Forested Area"}
+  ],
+  "mark": "bar",
+  "width": 700,
+  "height": 400,
+  "title": "Proportion of Lost Forests by Causes for each State/Territory",
+  "encoding": {
+    "y": {
+      "aggregate": "sum", "field": "AREA",
+      "title": "Proportion of Lost Area",
+      "stack":  "normalize"
+    },
+    "x": {
+      "field": "STATE", 
+      "type": "nominal", 
+      "title": "State/Territory"
+    },
+    "color": {
+      "field": "Cause for Loss of Forested Area",
+      "type": "nominal",
+      "scale": {
+            "domain": ["Hard Commodities","Logging","Natural Disturbances","Permanent Agriculture","Settlements & Infrastructure","Shifting Cultivation","Fire"],
+            "range": ["#0090FF","#59A000","#FF00E1","#0008FF","#F28000","#FBFF00","#FF2900"]
+        }
+    },
+    "tooltip": [
+      {"field": "Cause for Loss of Forested Area", "type":"nominal"},
+      {"field": "AREA", "type": "quantitative", "title": "Forest Area Lost (hectares)"},
+      {"field": "Proportion of Lost Forested Area", "type": "quantitative", "format": ".2%"}
+    ]
+  }
+}

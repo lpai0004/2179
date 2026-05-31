@@ -1,0 +1,19 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "title": "States/Territories by Forested Area lost to 2019-2020 Bushfires",
+  "data": {"url": "total_aus_bushfire_area.csv"},
+  "transform": [
+    {"filter": "datum.STATE != 'Total'"}
+  ],
+  "width": 500,
+  "height": 300,
+  "mark": {"type": "bar", "color": "#FF2900"},
+  "encoding": {
+    "x": {"field": "STATE", "type": "nominal", "axis": {"labelAngle": -90}, "title": "State/Territory", "sort": "y"},
+    "y": {"field": "FIRE", "type": "quantitative", "title": "Forested Area Burnt (hectares)"},
+    "tooltip": [
+        {"field": "STATE", "type": "nominal", "title": "State/Territory"},
+        {"field": "FIRE", "type": "quantitative", "title": "Forested Area Burnt (hectares)"}
+    ]
+  }
+}

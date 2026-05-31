@@ -1,0 +1,30 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "data": {"url": "aus_forest_state.csv"},
+  "transform": [
+    {"fold": ["ACACIA","CALLITRIS","CASUARINA","EUCALYPT","HARDWOOD","MANGROVE","MELALEUCA","RAINFOREST","SOFTWOOD","OTHER"], "as": ["Forest Type", "Land Area covered by Forest Type (hectares)"]}
+  ],
+  "mark": "bar",
+  "width": 360,
+  "title": "Proportion of Forest Types for each State/Territory",
+  "encoding": {
+    "y": {
+      "aggregate": "sum", "field": "Land Area covered by Forest Type (hectares)",
+      "title": "Proportion of Forests",
+      "stack":  "normalize"
+    },
+    "x": {
+      "field": "STATE", 
+      "type": "nominal", 
+      "title": "State/Territory"
+    },
+    "color": {
+      "field": "Forest Type",
+      "type": "nominal"
+    },
+    "tooltip": [
+      {"field": "Forest Type", "type":"nominal"},
+      {"field": "Land Area covered by Forest Type (hectares)", "type": "quantitative"}
+    ]
+  }
+}

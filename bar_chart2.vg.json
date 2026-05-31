@@ -1,0 +1,19 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "title": "States/Territories by Forested Area lost to Logging between 2000-2025",
+  "data": {"url": "state_forest_lost.csv"},
+  "transform": [
+    {"filter": "datum.STATE != 'Total'"}
+  ],
+  "width": 700,
+  "height": 400,
+  "mark": {"type": "bar", "color": "#59A000"},
+  "encoding": {
+    "x": {"field": "STATE", "type": "nominal", "axis": {"labelAngle": -90}, "title": "State/Territory", "sort": "y"},
+    "y": {"field": "Logging", "type": "quantitative", "title": "Forested Area Lost to Logging (hectares)"},
+    "tooltip": [
+        {"field": "STATE", "type": "nominal", "title": "State/Territory"},
+        {"field": "Logging", "type": "quantitative", "title": "Forested Area Lost to Logging (hectares)"}
+    ]
+  }
+}

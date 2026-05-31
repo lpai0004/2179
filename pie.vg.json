@@ -1,0 +1,42 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "title": "Proportion of Forest Types",
+  "data": {"url": "aus_forest_state.csv"},
+  "mark": "arc",
+  "params": [
+    {
+      "name": "STATE_SELECTION",
+      "bind": {
+        "input": "select",
+        "options": [
+          "Australian Capital Territory",
+          "New South Wales",
+          "Northern Territory",
+          "Queensland",
+          "South Australia",
+          "Tasmania",
+          "Victoria",
+          "Western Australia"
+        ],
+        "name": "State/Territory Selection:"
+      }
+    }
+  ],
+  "transform": [
+    {"filter": "datum.STATE == (STATE_SELECTION == null ? 'Australian Capital Territory' : STATE_SELECTION)"},
+    {"fold": ["ACACIA","CALLITRIS","CASUARINA","EUCALYPT","HARDWOOD","MANGROVE","MELALEUCA","RAINFOREST","SOFTWOOD","OTHER"], "as": ["FOREST_TYPE", "AREA"]},
+    {"joinaggregate": [{"op": "sum", "field": "AREA", "as": "TOTAL_AREA"}]},
+    {"calculate": "datum.AREA / datum.TOTAL_AREA", "as": "PROPORTION"}
+  ],
+  "width": 360,
+  "encoding": {
+    "theta": {"field": "AREA", "type": "quantitative", "stack": "normalize"},
+    "color": {"field": "FOREST_TYPE", "type": "nominal", "title": "Forest Type"},
+    "tooltip": [
+      {"field": "STATE", "type": "nominal", "title": "State/Territory"},
+      {"field": "FOREST_TYPE", "type": "nominal", "title": "Forest Type"},
+      {"field": "AREA", "type": "quantitative", "title": "Land Area covered by forest type (hectares)"},
+      {"field": "PROPORTION", "type": "quantitative", "title": "Proportion of Forested Area", "format": ".2%"}
+    ]
+  }
+}

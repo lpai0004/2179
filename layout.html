@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css" integrity="sha384-X38yfunGUhNzHpBaEBsWLO+A0HDYOQi8ufWDkZ0k9e0eXz/tH3II7uKZ9msv++Ls" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/grids-responsive-min.css" />
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
+
+    <title>Australia's Forests</title>
+</head>
+<body>
+    <div class="pure-g"> 
+        <div class="pure-u-1">
+            <h1>Australia's Forests</h1>
+        </div>
+    </div>
+
+    <div class="pure-g">
+        <div class="pure-u-2-3">
+            <div id="text_div">
+                <h4>
+                    Australia is the sixth largest country by land area, and is home to an expansive and diverse ecosystem. An integral element of its diverse ecosystem is the forests that many living organisms call home. These forests can be found all over the country, however due to both human interaction and natural causes, notable amounts of such forested areas are being destroyed. The two most notable causes for this destruction includes bushfires and logging.
+                </h4>
+            </div>
+        </div>
+        <div class="pure-u-1-3">
+            <img src="aus_forest.jpg" />
+        </div>
+    </div>
+
+    <div class="pure-g">
+        <div class="pure-u-2-3">
+            <div id="choropleth"></div>
+
+            <script type="text/javascript">
+
+            var spec = "choropleth.vg.json";
+            vegaEmbed('#choropleth', spec).then(function(result) {
+                // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+            }).catch(console.error);
+            </script>
+        </div>
+        <div class="pure-u-1-3">
+            <div id="text_div">
+                <h4>
+                    The distribution of forests throughout the country is not uniform. Notably, the ACT and Tasmania are the most forested states/territories in the country with over half of their land area being covered in forests! On the other hand, the states of Western Australia and South Australia have less than 10% of their land area being forested.  
+                </h4>
+            </div>
+        </div>
+    </div>
+
+    <div class="pure-g">
+        <div class="pure-u-1-3">
+            <div id="stacked_bar"></div>
+
+            <script type="text/javascript">
+
+            var spec2 = "stacked_bar_chart.vg.json";
+            vegaEmbed('#stacked_bar', spec2).then(function(result) {
+                // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+            }).catch(console.error);
+            </script>
+        </div>
+        <div class="pure-u-1-3">
+            <div id="text_div">
+                <h4>
+                    In each state and territory, a majority of the forested area is covered by Eucalypt trees. Notably, the proportion of Eucalypt forests is as high as 90% of all forested area in the ACT!
+                </h4>
+            </div>
+        </div>
+        <div class="pure-u-1-3">
+            <div id="pie"></div>
+
+            <script type="text/javascript">
+
+            var spec3 = "pie.vg.json";
+            vegaEmbed('#pie', spec3).then(function(result) {
+                // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+            }).catch(console.error);
+            </script>
+        </div>
+    </div>
+
+    <div class="pure-g">
+        <div class="pure-u-1-3">
+            <div id="text_div">
+                <h4>
+                    The 2019-2020 bushfire season is described as being one of the most devastating fire seasons in the country. During this time period, the south-eastern states and territories of NSW, Victoria, and the ACT, lost significant portions of their forests to these wildfires. Importantly, with the most common forest type being Eucalypt, and consideration with the fact that Eucalyptus trees are considerably more flammable due to their abundance of oils, the severity of these wildfires were heightened.
+                </h4>
+            </div>
+        </div>
+        <div class="pure-u-2-3">
+            <div id="choropleth2"></div>
+
+            <script type="text/javascript">
+
+            var spec4 = "choropleth2.vg.json";
+            vegaEmbed('#choropleth2', spec4).then(function(result) {
+                // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+            }).catch(console.error);
+            </script>
+        </div>
+    </div>
+
+    <div class="pure-g">
+        <div class="pure-u-1-3">
+            <div id="bar_chart"></div>
+
+            <script type="text/javascript">
+
+            var spec5 = "bar_chart.vg.json";
+            vegaEmbed('#bar_chart', spec5).then(function(result) {
+                // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+            }).catch(console.error);
+            </script>
+        </div>
+        <div class="pure-u-1-3">
+            <div id="text_div">
+                <h4>
+                    Not only did NSW, Victoria and ACT have the greatest proportion of their forested area burnt in these wildfires, they also had the greatest forested area burnt as well. Interestingly, the Northern Territory saw 0 hectares of its forests burnt in these fires. Moreover, when looking at the area burnt by these fires, approximately 92% of the fire area in the ACT was forested. In fact, in all states/territories except South Australia (and NT because there was no fire area) a majority of the fire area was forested, suggesting that the fire largely spread due to the presence of the forests.
+                </h4>
+            </div>
+        </div>
+        <div class="pure-u-1-3">
+            <div id="pie2"></div>
+
+            <script type="text/javascript">
+
+            var spec6 = "pie2.vg.json";
+            vegaEmbed('#pie2', spec6).then(function(result) {
+                // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+            }).catch(console.error);
+            </script>
+        </div>
+    </div>
+
+    <div class="pure-g">
+        <div class="pure-u-1-3">
+            <div id="text_div">
+                <h4>
+                    Logging is the process of cutting down and harvesting the wood from trees and thereby forests. In some states of Australia, such as Victoria and Western Australia, logging native trees/forest is illegal, and instead the industry is highly regulated and is sustainably managed. Despite this, wood is an integral material in many industries throughout the country, and so still needs to be harvested. The states that see the greatest land area of forests cut down and harvested are NSW, Tasmania, and Victoria.
+                </h4>
+            </div>
+        </div>
+        <div class="pure-u-2-3">
+            <div id="bar_chart2"></div>
+
+            <script type="text/javascript">
+
+            var spec7 = "bar_chart2.vg.json";
+            vegaEmbed('#bar_chart2', spec7).then(function(result) {
+                // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+            }).catch(console.error);
+            </script>
+        </div>
+    </div>
+
+    <div class="pure-g">
+        <div class="pure-u-1-3">
+            <div id="text_div">
+                <h4>
+                    Overall, the amount of forested area that is lost each year has remained rather steady around 500,000 hectares. Though, when considering the impact the 2019-2020 bushfire season had, there is a large spike in the history of forested area lost. 
+                </h4>
+            </div>
+        </div>
+        <div class="pure-u-2-3">
+            <div id="line_chart"></div>
+
+            <script type="text/javascript">
+
+            var spec8 = "line_chart.vg.json";
+            vegaEmbed('#line_chart', spec8).then(function(result) {
+                // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+            }).catch(console.error);
+            </script>
+        </div>
+    </div>
+
+    <div class="pure-g">
+        <div class="pure-u-1-3">
+            <div id="text_div">
+                <h4>
+                    In almost all the Australian states and territories, fire is the most significant cause for deforestation, as in all states and territories except the Northern Territory, fires are responsible for over 50% of the total forest area lost in the previous two decades. Notably, logging is another significant contributor to deforestation.
+                    <br><br>
+                    Note: "Hard Commodities" refers to forested area lost to the expansion of mining/energy infrastructure; "Natural Disturbances" refers to non-fire natural disturbances causing deforestation, such as landslides.
+                </h4>
+            </div>
+        </div>
+        <div class="pure-u-2-3">
+            <div id="stacked_bar2"></div>
+
+            <script type="text/javascript">
+
+            var spec9 = "stacked_bar_chart2.vg.json";
+            vegaEmbed('#stacked_bar2', spec9).then(function(result) {
+                // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+            }).catch(console.error);
+            </script>
+        </div>
+    </div>
+
+    <div class="pure-g">
+        <div class="pure-u-1">
+            <div id="line_chart2" style="width:100%"></div>
+
+            <script type="text/javascript">
+
+            var spec10 = "line_chart2.vg.json";
+            vegaEmbed('#line_chart2', spec10).then(function(result) {
+                // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+            }).catch(console.error);
+            </script>
+        </div>
+    </div>
+
+    <div class="pure-g">
+        <div class="pure-u-1-5"></div>
+        <div class="pure-u-3-5">
+            <div id="text_div">
+                <h4>
+                    Overall, fire has almost always been the most significant cause for loss of forest in the past two decades. However, when filtering out the spike during the catastrophic 2019 and 2020 bushfires, the impact of other causes can be truly recognised. Whilst the other causes are dwarfed by comparison to the impact fires have on the loss of forest, logging and permanent agriculture still result in the destruction and clearing of a significant area of forests.
+                </h4>
+            </div>
+        </div>
+        <div class="pure-u-1-5"></div>
+    </div>
+
+    <div class="pure-g">
+        <div class="pure-u-1"></div>
+            <div id="text_div">
+                <p>
+                    By Lewis Painter (34961119). Published 31/05/2026. Datasets sourced from: https://www.abs.gov.au/AUSSTATS/abs@.nsf/DetailsPage/1270.0.55.001July%202016?OpenDocument, https://www.globalforestwatch.org/dashboards/country/AUS/, https://www.agriculture.gov.au/abares/forestsaustralia/forest-data-maps-and-tools/spatial-data/forest-cover, and https://www.kaggle.com/datasets/kkhandekar/australian-forest-fire-area-20192020. Additionally, australian forest photo sourced from: https://unsplash.com/photos/green-leafed-trees-on-forest-seM6i8gJ7d0.
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

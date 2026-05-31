@@ -1,0 +1,16 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "title": "Amount of Forested Area Lost from 2001-2025",
+  "data": {"url": "forest_lost.csv"},
+  "mark": {"type": "line", "point": true},
+  "width": 700,
+  "height": 400,
+  "encoding": {
+    "x": {"field": "YEAR", "type": "temporal", "title": "Year"},
+    "y": {"field": "FOREST_LOST", "type": "quantitative", "title": "Forested Area Lost (hectares)"},
+    "tooltip": [
+        {"field": "YEAR", "type": "temporal", "title": "Year", "format": "%Y"},
+        {"field": "FOREST_LOST", "type": "quantitative", "title": "Forested Area Lost (hectares)"}
+    ]
+  }
+}
